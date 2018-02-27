@@ -54,8 +54,6 @@ export default {
   justify-content: center;
   align-items: center;
   background: #333;
-  box-shadow: 0 4px 4px rgba(0, 0, 0, .25);
-  margin-bottom: 12px;
 }
 .image {
   width: 100%;

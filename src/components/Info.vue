@@ -1,14 +1,20 @@
 <template>
   <article class="menu-info">
-      <h2 class="name">{{menu.name}}&nbsp;<span class="calorie">{{menu.calorie}}kcal</span></h2> 
-      <p class="price" v-if="menu.price">{{menu.price}}円</p>
-      <p class="price" v-else>0円</p>
-      <p class="description" v-if="menu.description">
+      <div class="header">
+        <h2 class="name">{{menu.name}}</h2> 
+        <p class="price" v-if="menu.price">{{menu.price}}円</p>
+        <p class="price" v-else>0円</p>
+      </div>
+      
+      <div class="description">
+      <h3 class="heading">詳細</h3>
+      <p class="text" v-if="menu.description">
           {{menu.description}}
       </p>
-      <p class="description" v-else>
+      <p class="text" v-else>
           メニュー説明はありません。
       </p>
+      </div>
   </article>
 </template>
 
@@ -20,32 +26,37 @@ export default {
 
 <style scoped>
     .menu-info {
-        width: 85%;
-        margin: 24px auto 0 auto;
+        margin: 0 auto;
         overflow: hidden;
     }
-    .name {
+    .header {
+        background: #fff;
+        box-shadow: 0 1px 2px rgba(0, 0, 0, .25);
+        display: flex;
+        justify-content: space-between;
+        padding: 0 24px;
+        align-items: center;
+        height: 72px;
         font-weight: bold;
-        font-size: 1.5rem;
     }
-    .calorie {
-        font-size: 1.25rem;
-        color: #555;
+    .name {
+        font-size: 1.15rem;
+        flex: .85;
     }
     .price {
-        font-weight: bold;
         line-height: 2rem;
-        font-size: 1.25rem;
+        font-size: 1.15rem;
     }
     .description {
+        padding: 24px;
+    }
+    .heading {
+        font-size: 1.25rem;
+        font-weight: bold;
+        margin-bottom: 12px;
+    }
+    .text {
         margin-top: 8px;
         color: #555;
-        font-weight: bold;
-    }
-
-    @media (min-width: 800px) {
-        .menu-info {
-            margin-top: 32px;
-        }
     }
 </style>
