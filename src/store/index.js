@@ -21,6 +21,7 @@ const store = new Vuex.Store({
   },
   actions: {
     FETCH_MENU({ commit }) {
+      commit('setMenu', null);
       return axios.get('https://matsuya.makotia.me/v4/random')
         .then((menu) => {
           commit('setMenu', menu.data);

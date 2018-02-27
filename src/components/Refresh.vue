@@ -1,11 +1,12 @@
 <template>
     <div class="refresh" @click="FETCH_MENU()">
-        <icon name="refresh" scale="1.75"></icon>
+        <icon name="refresh" scale="1.75" v-if="menu"></icon>
+        <icon name="refresh" scale="1.75" spin v-else></icon>
     </div>
 </template>
 
 <script>
-import { mapActions } from 'vuex';
+import { mapActions, mapGetters } from 'vuex';
 import Icon from 'vue-awesome/components/Icon';
 import 'vue-awesome/icons/refresh';
 
@@ -16,6 +17,11 @@ export default {
   methods: {
     ...mapActions([
       'FETCH_MENU',
+    ]),
+  },
+  computed: {
+    ...mapGetters([
+      'menu',
     ]),
   },
 };
