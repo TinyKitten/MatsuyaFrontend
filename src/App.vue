@@ -1,8 +1,6 @@
 <template>
   <div id="app">
-    <header>
-      <span>MWA Frontend</span>
-    </header>
+    <site-header />
     <main>
       <router-view></router-view>
     </main>
@@ -10,8 +8,13 @@
 </template>
 
 <script>
+import SiteHeader from './components/Header';
+
 export default {
   name: 'app',
+  components: {
+    SiteHeader,
+  },
 };
 </script>
 

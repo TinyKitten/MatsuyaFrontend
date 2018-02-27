@@ -1,6 +1,6 @@
 <template>
   <section class="page">
-    404
+    <h1 class="message">404 NOT FOUND</h1>
   </section>
 </template>
 
@@ -11,4 +11,13 @@ export default {
 </script>
 
 <style scoped>
+  .page {
+    padding-top: 50%;
+    text-align: center;
+  }
+  .message {
+    font-weight: bold;
+    font-size: 2rem;
+    color: #555;
+  }
 </style>
