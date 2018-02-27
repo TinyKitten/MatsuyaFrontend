@@ -1,5 +1,6 @@
 <template>
   <section class="page">
+    <search-panel v-if="searchPanelState" />
     <div class="wrapper" v-if="menu">
       <div class="image-wrapper">
         <menu-image :menu="menu" />
@@ -9,7 +10,7 @@
     <div class="pending" v-else>
       <icon name="refresh" scale="3" spin></icon>
     </div>
-    <refresh />
+    <refresh v-if="!searchPanelState" />
   </section>
 </template>
 
@@ -20,6 +21,7 @@ import 'vue-awesome/icons/refresh';
 import MenuImage from './Image';
 import MenuInfo from './Info';
 import Refresh from './Refresh';
+import SearchPanel from './SearchPanel';
 
 export default {
   name: 'Home',
@@ -28,6 +30,7 @@ export default {
     MenuInfo,
     Refresh,
     Icon,
+    SearchPanel,
   },
   methods: {
     ...mapActions([
@@ -37,6 +40,7 @@ export default {
   computed: {
     ...mapGetters([
       'menu',
+      'searchPanelState',
     ]),
   },
   mounted() {
