@@ -1,5 +1,7 @@
 # matsuyafrontend
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/TinyKitten/MatsuyaFrontend.svg)](https://greenkeeper.io/)
+
 > Matsuya-Web-API Frontend Project
 
 ## Build Setup
