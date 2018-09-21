@@ -58,5 +58,6 @@ export default {
 <style scoped>
 .cardCustom {
   transition: 0.25s;
+  cursor: pointer;
 }
 </style>
