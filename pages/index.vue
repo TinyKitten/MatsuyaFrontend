@@ -40,7 +40,8 @@
         @click="decrementPagination">Prev</a></li>
       <li
         v-for="(_, i) of Array(menuMaxCursor)"
-        :key="i"><a
+        :key="i"
+        @click="cursor = i"><a
           :class="i === cursor ? 'block bg-blue text-white border-r border-grey-light px-3 py-2' : 'block hover:text-white hover:bg-blue text-blue border-r border-grey-light px-3 py-2'"
           href="#">{{ i }}</a></li>
       <li><a
