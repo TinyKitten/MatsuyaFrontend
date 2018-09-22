@@ -10,7 +10,7 @@
     <!-- Menu Start -->
     <div class="flex flex-wrap justify-center">
       <div
-        v-for="(menu, i) of allMenu"
+        v-for="(menu, i) of menuWithCursor(cursor)"
         :key="i"
         class="w-full sm:w-1/2 md:w-1/3 lg:w-1/4 xl:w-1/4 m-4 min-h-full">
         <div class="cardCustom max-w-sm rounded overflow-hidden shadow-md hover:shadow-lg bg-white">
@@ -31,7 +31,24 @@
         </div>
       </div>
     </div>
-  <!-- Menu End -->
+    <!-- Menu End -->
+    <!-- Pagination Start -->
+    <ul class="flex flex-wrap list-reset border border-grey-light rounded w-auto font-sans justify-center">
+      <li><a
+        class="block hover:text-white hover:bg-blue text-blue border-r border-grey-light px-3 py-2"
+        href="#"
+        @click="decrementPagination">Prev</a></li>
+      <li
+        v-for="(_, i) of Array(menuMaxCursor)"
+        :key="i"><a
+          :class="i === cursor ? 'block bg-blue text-white border-r border-grey-light px-3 py-2' : 'block hover:text-white hover:bg-blue text-blue border-r border-grey-light px-3 py-2'"
+          href="#">{{ i }}</a></li>
+      <li><a
+        class="block hover:text-white hover:bg-blue text-blue px-3 py-2"
+        href="#"
+        @click="incrementPagination">Next</a></li>
+    </ul>
+    <!-- Pagination End -->
   </section>
 </template>
 
@@ -39,9 +56,15 @@
 import { mapActions, mapGetters } from 'vuex';
 
 export default {
+  data() {
+    return {
+      cursor: 0,
+    };
+  },
   computed: {
     ...mapGetters({
-      allMenu: 'allMenu',
+      menuWithCursor: 'menuWithCursor',
+      menuMaxCursor: 'menuMaxCursor',
     }),
   },
   async mounted() {
@@ -51,6 +74,18 @@ export default {
     ...mapActions({
       fetchAllMenu: 'FETCH_ALL_MENU',
     }),
+    incrementPagination(e) {
+      e.preventDefault();
+      if (this.cursor !== this.menuMaxCursor - 1) {
+        this.cursor += 1;
+      }
+    },
+    decrementPagination(e) {
+      e.preventDefault();
+      if (this.cursor !== 0) {
+        this.cursor -= 1;
+      }
+    },
   },
 }
 </script>

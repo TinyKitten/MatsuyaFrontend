@@ -4,13 +4,15 @@ import axios from 'axios';
 const store = () => new Vuex.Store({
   state: {
     menu: null,
-    allMenu: null,
+    allMenu: [],
     error: null,
     searchPanelState: false,
   },
   getters: {
     menu: state => state.menu,
     allMenu: state => state.allMenu,
+    menuWithCursor: state => cursor => cursor ? state.allMenu.slice((cursor * 10), (cursor * 10 + 10)) : state.allMenu.slice(0, 10),
+    menuMaxCursor: state => Math.ceil(state.allMenu.length / 10),
     findMenu: state => name => state.allMenu.filter(menu => menu.name.indexOf(name) === 0),
     error: state => state.error,
     searchPanelState: state => state.searchPanelState,
